@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comment.list');
+Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
 

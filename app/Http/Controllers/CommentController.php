@@ -13,7 +13,8 @@ class CommentController extends Controller
     public function index()
     {
         //
-        return view('list');
+        $comments = Comment::all();
+        return view('list', ['comments' => $comments]);
     }
 
     /**
@@ -35,9 +36,11 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Comment $comment)
+    public function show(Request $request, $id, Comment $comment)
     {
         //
+        $comment = Comment::find($id);
+        return view('show', ['comment' => $comment]);
     }
 
     /**
