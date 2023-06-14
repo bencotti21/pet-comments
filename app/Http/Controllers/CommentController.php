@@ -31,6 +31,12 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $comment = new Comment();
+        // $comment->user_id = $request->user_id;
+        $comment->user_id = 0;  //動作確認用
+        $comment->comment = $request->comment;
+        $comment->save();
+        return redirect('/comments');
     }
 
     /**
