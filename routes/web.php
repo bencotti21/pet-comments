@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::get('/comments', [CommentController::class, 'index'])->name('comment.list');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
 Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
+Route::delete('comment/{id}',[CommentController::class, 'destroy'])->name('comment.delete');
 

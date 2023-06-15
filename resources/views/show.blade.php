@@ -6,7 +6,13 @@
   <title>ぺっとコメンツ</title>
 </head>
 <body>
-  <p>ユーザー名・<?= date("Y年n月j日") ?></p>
-  {{ $comment->comment }}
+  <p>ユーザー名</p>
+  <form method="POST" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
+    @csrf
+    @method('DELETE')
+    <input type="submit" value="削除">
+  </form>
+  <p>{{ $comment->comment }}</p>
+  <p><?= date("Y年n月j日・G:i") ?></p>
 </body>
 </html>
