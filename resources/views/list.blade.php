@@ -8,7 +8,7 @@
   </form>
   @foreach ($comments as $comment)
     <p>ユーザー名・{{ date("Y年n月j日") }}
-      @if (isset($comment->updated_at))
+      @if ($comment->updated_at > $comment->created_at)
         （編集済み）
       @endif
     </p>

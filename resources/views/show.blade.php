@@ -9,7 +9,7 @@
   </form>
   <p>{{ $comment->comment }}</p>
   <p>{{ date("Y年n月j日・G:i") }}
-    @if (isset($comment->updated_at))
+    @if ($comment->updated_at > $comment->created_at)
       （編集済み）
     @endif
   </p>
