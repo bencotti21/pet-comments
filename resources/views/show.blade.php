@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ぺっとコメンツ</title>
-</head>
-<body>
+@extends('layout')
+@section('content')
   <p>ユーザー名</p>
   <p><a href="{{ route('comment.edit', ['id' => $comment->id]) }}">編集</a></p>
   <form method="POST" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
@@ -19,5 +13,4 @@
       （編集済み）
     @endif
   </p>
-</body>
-</html>
+@endsection
