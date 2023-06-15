@@ -13,7 +13,11 @@
     <input type="submit" value="コメントする">
   </form>
   @foreach ($comments as $comment)
-    <p>ユーザー名・<?= date("Y年n月j日") ?></p>
+    <p>ユーザー名・{{ date("Y年n月j日") }}
+      @if (isset($comment->updated_at))
+        （編集済み）
+      @endif
+    </p>
     <p>
       <a href="{{ route('comment.show', ['id' => $comment->id]) }}">
         {{ $comment->comment }}

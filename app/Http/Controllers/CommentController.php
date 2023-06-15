@@ -52,17 +52,23 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment)
+    public function edit(Request $request, $id, Comment $comment)
     {
         //
+        $comment = Comment::find($id);
+        return view('edit', ['comment' => $comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id, Comment $comment)
     {
         //
+        $comment = Comment::find($id);
+        $comment->comment = $request->comment;
+        $comment->save();
+        return redirect()->route('comment.show', ['id' => $comment->id]);
     }
 
     /**

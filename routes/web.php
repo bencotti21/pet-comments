@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comment.list');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+Route::get('/comment/edit/{id}', [CommentController::class, 'edit'])->name('comment.edit');
+Route::put('/comment/update/{id}', [CommentController::class, 'update'])->name('comment.update');
 Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
 Route::delete('comment/{id}',[CommentController::class, 'destroy'])->name('comment.delete');
 
