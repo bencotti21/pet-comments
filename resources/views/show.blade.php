@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.app')
+
 @section('content')
   <p>ユーザー名</p>
   <p><a href="{{ route('comment.edit', ['id' => $comment->id]) }}">編集</a></p>
