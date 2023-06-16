@@ -8,7 +8,7 @@
     <input type="submit" value="削除">
   </form>
   <p>{{ $comment->comment }}</p>
-  <p>{{ date("Y年n月j日・G:i") }}
+  <p>{{ $comment->created_at->format("Y年n月j日・G:i") }}
     @if ($comment->updated_at > $comment->created_at)
       （編集済み）
     @endif
