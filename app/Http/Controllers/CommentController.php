@@ -35,6 +35,11 @@ class CommentController extends Controller
         // $comment->user_id = $request->user_id;
         $comment->user_id = 0;  //動作確認用
         $comment->comment = $request->comment;
+        if ($request->target_id) {
+            $comment->target_id = $request->target_id;
+            $comment->save();
+            return redirect()->route('comment.show', ['id' => $request->target_id]);
+        }
         $comment->save();
         return redirect('/comments');
     }
@@ -46,7 +51,8 @@ class CommentController extends Controller
     {
         //
         $comment = Comment::find($id);
-        return view('show', ['comment' => $comment]);
+        $replies = Comment::whereTarget_id($id)->orderBy('id', 'desc')->get();
+        return view('show', ['comment' => $comment, 'replies' => $replies]);
     }
 
     /**

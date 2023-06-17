@@ -14,4 +14,22 @@
       （編集済み）
     @endif
   </p>
+  <form method="POST" action="{{ route('comment.store', ['target_id' => $comment->id]) }}">
+    @csrf
+    <p>返信</p>
+    <textarea name="comment"></textarea>
+    <input type="submit" value="返信する">
+  </form>
+  @foreach ($replies as $reply)
+    <p>ユーザー名・{{ $reply->created_at->diffForHumans() }}
+      @if ($reply->updated_at > $reply->created_at)
+        （編集済み）
+      @endif
+    </p>
+    <p>
+      <a href="{{ route('comment.show', ['id' => $reply->id]) }}">
+        {{ $reply->comment }}
+      </a>
+    </p>
+  @endforeach
 @endsection
