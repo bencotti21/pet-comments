@@ -10,9 +10,7 @@
   </form>
   <p>{{ $comment->comment }}</p>
   <p>{{ $comment->created_at->format("Y年n月j日・G:i") }}
-    @if ($comment->updated_at > $comment->created_at)
-      （編集済み）
-    @endif
+    {{ \Common::getUpdatedWord($comment) }}
   </p>
   <form method="POST" action="{{ route('comment.store', ['target_id' => $comment->id]) }}">
     @csrf
@@ -21,10 +19,8 @@
     <input type="submit" value="返信する">
   </form>
   @foreach ($replies as $reply)
-    <p>ユーザー名・{{ $reply->created_at->diffForHumans() }}
-      @if ($reply->updated_at > $reply->created_at)
-        （編集済み）
-      @endif
+    <p>ユーザー名・{{ \Common::getDiffTime($reply) }}
+      {{ \Common::getUpdatedWord($reply) }}
     </p>
     <p>
       <a href="{{ route('comment.show', ['id' => $reply->id]) }}">

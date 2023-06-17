@@ -8,10 +8,8 @@
     <input type="submit" value="コメントする">
   </form>
   @foreach ($comments as $comment)
-    <p>ユーザー名・{{ $comment->created_at->diffForHumans() }}
-      @if ($comment->updated_at > $comment->created_at)
-        （編集済み）
-      @endif
+    <p>ユーザー名・{{ \Common::getDiffTime($comment) }}
+      {{ \Common::getUpdatedWord($comment) }}
     </p>
     <p>
       <a href="{{ route('comment.show', ['id' => $comment->id]) }}">
