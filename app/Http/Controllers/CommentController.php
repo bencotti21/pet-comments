@@ -13,7 +13,7 @@ class CommentController extends Controller
     public function index()
     {
         //
-        $comments = Comment::orderBy('id', 'desc')->get();
+        $comments = Comment::whereNull('target_id')->orderBy('id', 'desc')->get();
         return view('list', ['comments' => $comments]);
     }
 
