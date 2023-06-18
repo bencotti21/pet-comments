@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  @if (Auth::id() === $comment->id)
   <p>{{ $comment->user->name }}</p>
+  
+  @if (Auth::id() === $comment->user_id)
   <p><a href="{{ route('comment.edit', ['id' => $comment->id]) }}">編集</a></p>
   <form method="POST" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
     @csrf
