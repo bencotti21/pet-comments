@@ -20,11 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/comments', [CommentController::class, 'index'])->name('comment.list');
-Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
-Route::get('/comment/edit/{id}', [CommentController::class, 'edit'])->name('comment.edit');
-Route::put('/comment/update/{id}', [CommentController::class, 'update'])->name('comment.update');
+Route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
+Route::get('/comment/edit/{id}', [CommentController::class, 'edit'])->middleware('auth')->name('comment.edit');
+Route::put('/comment/update/{id}', [CommentController::class, 'update'])->middleware('auth')->name('comment.update');
 Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
-Route::delete('comment/{id}',[CommentController::class, 'destroy'])->name('comment.delete');
+Route::delete('comment/{id}',[CommentController::class, 'destroy'])->middleware('auth')->name('comment.delete');
 
 Route::delete('/user',[UserController::class, 'destroy'])->name('user.delete');
 
