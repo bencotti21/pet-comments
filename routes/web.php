@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('/comment/edit/{id}', [CommentController::class, 'edit'])->name('comm
 Route::put('/comment/update/{id}', [CommentController::class, 'update'])->name('comment.update');
 Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
 Route::delete('comment/{id}',[CommentController::class, 'destroy'])->name('comment.delete');
+
+Route::delete('/user',[UserController::class, 'destroy'])->name('user.delete');
 
 
 Auth::routes();

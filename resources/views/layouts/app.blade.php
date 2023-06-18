@@ -68,6 +68,17 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                    <a class="dropdown-item" href="{{ route('user.delete') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('user-delete-form').submit();">
+                                        アカウント削除
+                                    </a>
+
+                                    <form id="user-delete-form" action="{{ route('user.delete') }}" method="POST" class="d-none">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </div>
                             </li>
                         @endguest
