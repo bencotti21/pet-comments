@@ -2,7 +2,7 @@
 
 @section('content')
   @if (Auth::id() === $comment->id)
-  <p>ユーザー名</p>
+  <p>{{ $comment->user->name }}</p>
   <p><a href="{{ route('comment.edit', ['id' => $comment->id]) }}">編集</a></p>
   <form method="POST" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
     @csrf
@@ -26,7 +26,7 @@
   @endauth
 
   @foreach ($replies as $reply)
-    <p>ユーザー名・{{ \Common::getDiffTime($reply) }}
+    <p>{{ $reply->user->name }}・{{ \Common::getDiffTime($reply) }}
       {{ \Common::getUpdatedWord($reply) }}
     </p>
     <p>

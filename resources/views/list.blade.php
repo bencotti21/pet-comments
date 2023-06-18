@@ -9,9 +9,9 @@
     <input type="submit" value="コメントする">
   </form>
   @endauth
-  
+
   @foreach ($comments as $comment)
-    <p>ユーザー名・{{ \Common::getDiffTime($comment) }}
+    <p>{{ $comment->user->name }}・{{ \Common::getDiffTime($comment) }}
       {{ \Common::getUpdatedWord($comment) }}
     </p>
     <p>

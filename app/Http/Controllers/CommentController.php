@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -32,8 +33,7 @@ class CommentController extends Controller
     {
         //
         $comment = new Comment();
-        // $comment->user_id = $request->user_id;
-        $comment->user_id = 0;  //動作確認用
+        $comment->user_id = Auth::id();
         $comment->comment = $request->comment;
         if ($request->target_id) {
             $comment->target_id = $request->target_id;
