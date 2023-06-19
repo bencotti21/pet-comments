@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-  <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
-    @csrf
-    <p>コメント</p>
-    <textarea name="comment">{{ $comment->comment }}</textarea>
-    @method('PUT')
-    <input type="submit" value="更新する">
-  </form>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
+          @csrf
+          @method('PUT')
+          <div class="form-group mb-2">
+            <textarea name="comment" style="width:100%;" class="form-control">{{ $comment->comment }}</textarea>
+          </div>
+          <div style="text-align:right;">
+            <input type="submit" value="更新する">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
