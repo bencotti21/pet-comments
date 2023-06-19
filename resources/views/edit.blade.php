@@ -4,6 +4,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント編集</strong></h2>
         <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
           @csrf
           @method('PUT')

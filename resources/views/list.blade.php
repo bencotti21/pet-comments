@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント一覧</strong></h2>
+      </div>
+    </div>
+  </div>
+  
   @auth
   <div class="container-fluid">
     <div class="row justify-content-center">
