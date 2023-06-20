@@ -15,17 +15,22 @@
             
             @if (Auth::id() === $comment->user_id)
               <span style="float:right;">
-                <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" style="text-decoration:none;color:black;"
+                <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" style="text-decoration:none;color:black;"
                  onclick="event.preventDefault();
-                         document.getElementById('comment-delete-form').submit();">［削除］</a>
+                         if(confirm('コメントを削除しますか？')){document.getElementById('comment-delete-form').submit();}">
+                  ［削除］
+                </a>
                 
                 <form id="comment-delete-form" method="POST" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
                   @csrf
                   @method('DELETE')
                 </form>
               </span>
+
               <span style="float:right;">
-                <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" style="text-decoration:none;color:black;">［編集］</a>
+                <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" style="text-decoration:none;color:black;">
+                  ［編集］
+                </a>
               </span>
             @endif
 
