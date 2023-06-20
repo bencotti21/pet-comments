@@ -15,4 +15,8 @@ class Common
       return "（編集済み）";
     }
   }
+
+  public static function getTargetUser ($target_id) {
+    return Comment::find($target_id)->user;
+  }
 }

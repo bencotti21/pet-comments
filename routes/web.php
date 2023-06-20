@@ -26,6 +26,7 @@ Route::put('/comment/update/{id}', [CommentController::class, 'update'])->middle
 Route::get('/comment/{id}',[CommentController::class, 'show'])->name('comment.show');
 Route::delete('comment/{id}',[CommentController::class, 'destroy'])->middleware('auth')->name('comment.delete');
 
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 Route::delete('/user',[UserController::class, 'destroy'])->name('user.delete');
 
 

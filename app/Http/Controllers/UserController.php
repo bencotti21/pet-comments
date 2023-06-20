@@ -15,6 +15,13 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    protected function show($id)
+    {
+        $user = User::find($id);
+        $comments = $user->comments()->orderBy('id', 'desc')->get();
+        return view('user', ['user' => $user, 'comments' => $comments]);
+    }
+
     protected function destroy()
     {
         Comment::whereUser_id(Auth::id())->delete();

@@ -7,7 +7,11 @@
         <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント詳細</strong></h2>
         <div class="card mb-4">
           <div style="padding:8px;">
-            <span><strong>{{ $comment->user->name }}</strong></span>
+            <span>
+              <a href="{{ route('user.show', ['id' => $comment->user_id]) }}" style="text-decoration:none;color:black;">
+                <strong>{{ $comment->user->name }}</strong>
+              </a>
+            </span>
             
             @if (Auth::id() === $comment->user_id)
               <span style="float:right;">
@@ -61,12 +65,16 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="card mb-2">
-            <a href="{{ route('comment.show', ['id' => $reply->id]) }}" style="text-decoration:none;color:black;">
+          <div class="card mb-2" style="position:relative;">
+            <a href="{{ route('comment.show', ['id' => $reply->id]) }}" style="text-decoration:none;color:black;position:absolute;top:0;right:0;bottom:0;left:0;"></a>
               <div class="media">
                 <div class="media-body">
                   <div style="padding:8px;">
-                    <span><strong>{{ $reply->user->name }}</strong></span>
+                    <span>
+                      <a href="{{ route('user.show', ['id' => $reply->user_id]) }}" style="text-decoration:none;color:black;position:relative;">
+                        <strong>{{ $reply->user->name }}</strong>
+                      </a>
+                    </span>
                     <span class="text-muted">
                       <span>・</span>
                       <span>{{ \Common::getDiffTime($reply) }}</span>
@@ -78,7 +86,6 @@
                   </div>
                 </div>
               </div>
-            </a>
           </div>
         </div>
       </div>
