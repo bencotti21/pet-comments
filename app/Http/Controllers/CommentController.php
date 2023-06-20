@@ -32,9 +32,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $inputs=$request->validate([
+            'comment' => 'required|max:255'
+        ],
+        [
+            'comment.required' => 'コメントを入力してください。',
+            'comment.max' => 'コメントは255文字以内にしてください。'
+        ]);
+
         $comment = new Comment();
         $comment->user_id = Auth::id();
-        $comment->comment = $request->comment;
+        $comment->comment = $inputs['comment'];
         if ($request->target_id) {
             $comment->target_id = $request->target_id;
             $comment->save();
@@ -71,8 +79,16 @@ class CommentController extends Controller
     public function update(Request $request, $id, Comment $comment)
     {
         //
+        $inputs=$request->validate([
+            'comment' => 'required|max:255'
+        ],
+        [
+            'comment.required' => 'コメントを入力してください。',
+            'comment.max' => 'コメントは255文字以内にしてください。'
+        ]);
+
         $comment = Comment::find($id);
-        $comment->comment = $request->comment;
+        $comment->comment = $inputs['comment'];
         $comment->save();
         return redirect()->route('comment.show', ['id' => $comment->id]);
     }

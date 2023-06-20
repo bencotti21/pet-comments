@@ -5,6 +5,17 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント編集</strong></h2>
+
+        @if($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
         <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
           @csrf
           @method('PUT')

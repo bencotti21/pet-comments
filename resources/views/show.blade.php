@@ -42,6 +42,16 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-6 mb-4">
+          @if($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+          
           <form method="POST" action="{{ route('comment.store', ['target_id' => $comment->id]) }}">
             @csrf
             <div class="form-group mb-2">
