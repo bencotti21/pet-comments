@@ -75,7 +75,7 @@
 
                                     <a class="dropdown-item" href="{{ route('user.delete') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('user-delete-form').submit();">
+                                                     if(confirm('アカウントを削除しますか？')){document.getElementById('user-delete-form').submit();}">
                                         アカウント削除
                                     </a>
 

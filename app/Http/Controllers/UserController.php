@@ -24,8 +24,8 @@ class UserController extends Controller
 
     protected function destroy()
     {
-        Comment::whereUser_id(Auth::id())->delete();
         $user = Auth::user();
+        $user->comments()->delete();
         $user->delete();
         Auth::logout();
         return redirect('/');
