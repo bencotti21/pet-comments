@@ -5,22 +5,12 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント編集</strong></h2>
-
-        @if($errors->any())
-          <div class="alert alert-danger">
-            <ul>
-              @foreach($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
-
+        @include('error')
         <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
           @csrf
           @method('PUT')
           <div class="form-group mb-2">
-            <textarea name="comment" style="width:100%;" class="form-control">{{ $comment->comment }}</textarea>
+            <textarea name="comment" style="width:100%;" class="form-control" rows="7">{{ $errors->any() ? old('comment') : $comment->comment }}</textarea>
           </div>
           <div style="text-align:right;">
             <input type="submit" value="更新する">

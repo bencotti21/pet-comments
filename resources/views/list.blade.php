@@ -13,20 +13,11 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-6 mb-4">
-          @if($errors->any())
-            <div class="alert alert-danger">
-              <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-              </ul>
-            </div>
-          @endif
-          
+          @include('error')
           <form method="POST" action="{{ route('comment.store') }}">
             @csrf
             <div class="form-group mb-2">
-              <textarea name="comment" style="width:100%;" class="form-control"></textarea>
+              <textarea name="comment" style="width:100%;" class="form-control">{{ old('comment') }}</textarea>
             </div>
             <div style="text-align:right;">
               <input type="submit" value="コメントする">
