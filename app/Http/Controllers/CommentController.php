@@ -49,6 +49,7 @@ class CommentController extends Controller
             return redirect()->route('comment.show', ['id' => $request->target_id]);
         }
         $comment->save();
+        $request->session()->regenerateToken();
         return redirect('/comments');
     }
 
