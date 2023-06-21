@@ -5,14 +5,16 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div style="margin-bottom:16px;">
-          <span style="font-size:20px;font-weight:bold;padding:8px;"><a href="#" style="text-decoration:none;color:black;" onclick="history.back();">←</a></span>
-          <h2 style="font-size:20px;padding:16px;display:inline;"><strong>コメント詳細</strong></h2>
+          <span style="font-size:20px;font-weight:bold;padding:8px;">
+            <a href="#" style="text-decoration:none;color:black;" onclick="history.back();">←</a>
+          </span>
+          <h2 style="font-size:20px;font-weight:bold;padding:16px;display:inline;">コメント詳細</h2>
         </div>
         <div class="card mb-4">
           <div style="padding:8px;">
-            <span>
+            <span style="font-weight:bold;">
               <a href="{{ route('user.show', ['id' => $comment->user_id]) }}" style="text-decoration:none;color:black;">
-                <strong>{{ $comment->user->name }}</strong>
+                {{ $comment->user->name }}
               </a>
             </span>
             
@@ -54,7 +56,9 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-6 mb-4">
+
           @include('error')
+          
           <form method="POST" action="{{ route('comment.store', ['target_id' => $comment->id]) }}">
             @csrf
             <div class="form-group mb-2">
@@ -78,9 +82,9 @@
               <div class="media">
                 <div class="media-body">
                   <div style="padding:8px;">
-                    <span>
+                    <span style="font-weight:bold;">
                       <a href="{{ route('user.show', ['id' => $reply->user_id]) }}" style="text-decoration:none;color:black;position:relative;">
-                        <strong>{{ $reply->user->name }}</strong>
+                        {{ $reply->user->name }}
                       </a>
                     </span>
                     <span class="text-muted">

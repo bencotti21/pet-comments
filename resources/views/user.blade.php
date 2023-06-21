@@ -5,8 +5,10 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div style="margin-bottom:16px;">
-          <span style="font-size:20px;font-weight:bold;padding:8px;"><a href="#" style="text-decoration:none;color:black;" onclick="history.back();">←</a></span>
-          <h2 style="font-size:20px;padding:16px;display:inline;"><strong>{{ $user->name }}</strong></h2>
+          <span style="font-size:20px;font-weight:bold;padding:8px;">
+            <a href="#" style="text-decoration:none;color:black;" onclick="history.back();">←</a>
+          </span>
+          <h2 style="font-size:20px;font-weight:bold;padding:16px;display:inline;">{{ $user->name }}</h2>
         </div>
       </div>
     </div>
@@ -21,9 +23,9 @@
           <div class="media">
             <div class="media-body">
               <div style="padding:8px;">
-                <span>
+                <span style="font-weight:bold;">
                   <a href="{{ route('user.show', ['id' => $comment->user_id]) }}" style="text-decoration:none;color:black;position:relative;">
-                    <strong>{{ $comment->user->name }}</strong>
+                    {{ $comment->user->name }}
                   </a>
                 </span>
                 <span class="text-muted">
@@ -37,7 +39,9 @@
                 <div style="padding:0px 16px 8px 16px;">
                   <span class="text-muted">返信先：</span>
                   <span>
-                    <a href="{{ route('user.show', ['id' => \Common::getTargetUser($comment->target_id)->id]) }}" style="text-decoration:none;color:black;position:relative;">{{ \Common::getTargetUser($comment->target_id)->name }}</a>
+                    <a href="{{ route('user.show', ['id' => \Common::getTargetUser($comment->target_id)->id]) }}" style="text-decoration:none;color:black;position:relative;">
+                      {{ \Common::getTargetUser($comment->target_id)->name }}
+                    </a>
                   </span>
                   <span class="text-muted">さん</span>
                 </div>

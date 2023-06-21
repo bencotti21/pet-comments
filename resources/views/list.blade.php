@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント一覧</strong></h2>
+        <h2 style="font-size:20px;font-weight:bold;padding-bottom:8px">コメント一覧</h2>
       </div>
     </div>
   </div>
@@ -13,7 +13,9 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-6 mb-4">
+
           @include('error')
+          
           <form method="POST" action="{{ route('comment.store') }}">
             @csrf
             <div class="form-group mb-2">
@@ -37,9 +39,9 @@
             <div class="media">
               <div class="media-body">
                 <div style="padding:8px;">
-                  <span>
+                  <span style="font-weight:bold;">
                     <a href="{{ route('user.show', ['id' => $comment->user_id]) }}" style="text-decoration:none;color:black;position:relative;">
-                      <strong>{{ $comment->user->name }}</strong>
+                      {{ $comment->user->name }}
                     </a>
                   </span>
                   <span class="text-muted">
