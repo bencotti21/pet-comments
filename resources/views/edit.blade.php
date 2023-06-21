@@ -4,7 +4,10 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h2 style="font-size:20px;padding-bottom:8px"><strong>コメント編集</strong></h2>
+        <div style="margin-bottom:16px;">
+          <span style="font-size:20px;font-weight:bold;padding:8px;"><a href="#" style="text-decoration:none;color:black;" onclick="history.back();">←</a></span>
+          <h2 style="font-size:20px;padding:16px;display:inline;"><strong>コメント編集</strong></h2>
+        </div>
         @include('error')
         <form method="POST" action="{{ route('comment.update', ['id' => $comment->id]) }}">
           @csrf
