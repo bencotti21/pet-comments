@@ -25,9 +25,9 @@ class UserController extends Controller
     protected function destroy()
     {
         $user = Auth::user();
+        Auth::logout();
         $user->comments()->delete();
         $user->delete();
-        Auth::logout();
         return redirect('/');
     }
 }
