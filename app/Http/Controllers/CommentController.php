@@ -40,6 +40,7 @@ class CommentController extends Controller
         if ($request->target_id) {
             $comment->target_id = $request->target_id;
             $comment->save();
+            $request->session()->regenerateToken();
             return redirect()->route('comment.show', ['id' => $request->target_id]);
         }
         $comment->save();
