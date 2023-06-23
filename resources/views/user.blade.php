@@ -37,13 +37,17 @@
 
               @if ($comment->target_id)
                 <div style="padding:0px 16px 8px 16px;">
-                  <span class="text-muted">返信先：</span>
-                  <span>
-                    <a href="{{ route('user.show', ['id' => \Common::getTargetUser($comment->target_id)->id]) }}" style="text-decoration:none;color:black;position:relative;">
-                      {{ \Common::getTargetUser($comment->target_id)->name }}
-                    </a>
-                  </span>
-                  <span class="text-muted">さん</span>
+                  @if (\Common::getTargetUser($comment->target_id))
+                    <span class="text-muted">返信先：</span>
+                    <span>
+                      <a href="{{ route('user.show', ['id' => \Common::getTargetUser($comment->target_id)->id]) }}" style="text-decoration:none;color:black;position:relative;">
+                        {{ \Common::getTargetUser($comment->target_id)->name }}
+                      </a>
+                    </span>
+                    <span class="text-muted">さん</span>
+                  @else
+                    <span class="text-muted">返信先のコメントは削除されました。</span>
+                  @endif
                 </div>
               @endif
 

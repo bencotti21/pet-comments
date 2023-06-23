@@ -17,6 +17,9 @@ class Common
   }
 
   public static function getTargetUser ($target_id) {
-    return Comment::find($target_id)->user;
+    if (Comment::find($target_id)) {
+      return Comment::find($target_id)->user;
+    }
+    return false;
   }
 }
